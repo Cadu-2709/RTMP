@@ -27,6 +27,7 @@
             background-color: var(--cor-fundo);
             color: var(--cor-texto);
         }
+        .weatherwidget-io { pointer-events: none; }
         .bg-minha-marca { background-color: var(--cor-primaria); }
         .text-azul { color: var(--cor-secundaria); font-weight: 600; }
         .navbar { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
@@ -88,6 +89,17 @@
             font-weight: 600;
             color: #ffffff;
         }
+        .nav-pills .nav-link {
+            background-color: #e9ecef;
+            color: var(--cor-texto);
+            font-weight: 600;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        .nav-pills .nav-link.active, .nav-pills .nav-link:hover {
+            background-color: var(--cor-secundaria);
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
@@ -106,6 +118,14 @@
     <main class="container my-5">
         <div class="row g-4">
             <div class="col-lg-8">
+                <ul class="nav nav-pills mb-3" id="camera-selector">
+                    <li class="nav-item">
+                        <a class="nav-link active camera-switch-btn" href="#" data-src="https://rtspserver.zeusvision.com.br/a01f2f6a-a77c-43a5-a10c-af1ffdb00fd1/">Speed Dome</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link camera-switch-btn" href="#" data-src="https://rtspserver.zeusvision.com.br/a01f67b4-087f-434d-961d-3855dbb09eb0/">Panorâmica</a>
+                    </li>
+                </ul>
                 <div class="video-container">
                     <div id="placeholder-cadeado" class="placeholder-container">
                         <i class="fa-solid fa-lock"></i>
@@ -113,6 +133,7 @@
                     </div>
                     <div class="ratio ratio-16x9">
                         <iframe 
+                            id="camera-iframe"
                             src="https://rtspserver.zeusvision.com.br/a01f2f6a-a77c-43a5-a10c-af1ffdb00fd1/" 
                             title="Câmera ao vivo do Autódromo" 
                             allowfullscreen
@@ -132,7 +153,7 @@
                         </div>
                         <hr class="my-4">
                         <div class="mt-auto">
-                            <a class="weatherwidget-io" href="https://forecast7.com/pt/n27d10n52d62/chapeco/" data-icons="Climacons Animated" data-days="3" data-theme="pure" data-textcolor="#172b3f" data-mooncolor="#0171ff" data-cloudcolor="#0171ff" >Chapecó, State of Santa Catarina, Brazil</a>
+                            <a class="weatherwidget-io" href="https://forecast7.com/pt/n27d10n52d62/chapeco/" data-icons="Climacons Animated" data-days="3" data-theme="pure" data-textcolor="#172b3f" data-mooncolor="#0171ff" data-cloudcolor="#0171ff" >Chapecó, SC, Brasil</a>
                             <script>
                             !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
                             </script>
@@ -215,17 +236,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
     <script>
-        
-        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-
-        
         document.addEventListener('DOMContentLoaded', function() {
             
-            
+            // --- INICIALIZAÇÃO DOS TOOLTIPS ---
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
+            // --- LÓGICA DA SENHA ---
             const SENHA_CORRETA = 'proxmon@mhnet'; 
-            
-            
             const placeholderCadeado = document.getElementById('placeholder-cadeado');
             const modalElement = document.getElementById('modalSenha');
             const modalSenha = new bootstrap.Modal(modalElement);
@@ -233,33 +251,40 @@
             const inputSenha = document.getElementById('inputSenha');
             const erroSenha = document.getElementById('erroSenha');
 
-            
             placeholderCadeado.addEventListener('click', function() {
                 inputSenha.value = ''; 
                 erroSenha.style.display = 'none'; 
                 modalSenha.show();
             });
 
-            
             function verificarSenha() {
                 if (inputSenha.value === SENHA_CORRETA) {
-                    
                     placeholderCadeado.style.display = 'none';
                     modalSenha.hide(); 
                 } else {
-                    
                     erroSenha.style.display = 'block';
                 }
             }
 
-            
             btnVerificarSenha.addEventListener('click', verificarSenha);
-
-            
             inputSenha.addEventListener('keypress', function(event) {
                 if (event.key === 'Enter') {
                     verificarSenha();
                 }
+            });
+
+            // --- LÓGICA DO ALTERNADOR DE CÂMERA ---
+            const cameraIframe = document.getElementById('camera-iframe');
+            const switchButtons = document.querySelectorAll('.camera-switch-btn');
+
+            switchButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault(); 
+                    switchButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    const newSrc = this.dataset.src;
+                    cameraIframe.src = newSrc;
+                });
             });
         });
     </script>
