@@ -17,3 +17,9 @@
 .bg-azul {
     background-color:#0171ff
 }
+
+.container-logo {
+  height: 100px;
+  display: flex;
+  align-items: flex-end; 
+}

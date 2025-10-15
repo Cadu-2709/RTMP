@@ -1,75 +1,210 @@
 <!DOCTYPE html>
-<html lang="pt-bt">
+<html lang="pt-br">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROXLIVE</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="icon" href="img/Brandbook-ProXmon-S-1 (3).png" type="image/png">
 
+    <style>
+        
+        :root {
+            --cor-primaria: #0d2c54; 
+            --cor-secundaria: #0171ff; 
+            --cor-fundo: #f4f7f9; 
+            --cor-texto: #333;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+        }
+
+        .bg-minha-marca {
+            background-color: var(--cor-primaria);
+        }
+
+        .text-azul {
+            color: var(--cor-secundaria);
+            font-weight: 600;
+        }
+
+        .navbar {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-info {
+            border: none;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card-info:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-container {
+            border-radius: 0.5rem;
+            overflow: hidden; 
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-cta {
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+        }
+
+        .btn-custom {
+            transition: all 0.3s ease;
+        }
+
+       
+
+        .group-section {
+            background-color: #ffffff; 
+            padding: 80px 0; 
+            border-top: 1px solid #e9ecef; 
+        }
+
+        .company-logo-wrapper {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .company-logo {
+            max-width: 150px; 
+            height: auto;
+            filter: grayscale(100%); 
+            opacity: 0.7;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .company-logo:hover {
+            filter: grayscale(0%); 
+            opacity: 1;
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
 
-<nav class="navbar bg-minha-marca">
-  <div class="container-fluid px-5">
-    <a class="navbar-brand" href="#">
-      <img src="img/ProXlive (4).png" alt="Bootstrap" height="30">
-    </a>
-    <p class="fs-6 mb-0" style="color: white; ">Parceria EFAPI 2025</p>
-  </div>
-</nav>
+    <nav class="navbar bg-minha-marca navbar-dark">
+      <div class="container-fluid px-lg-5 py-2">
+        <a class="navbar-brand" href="#">
+          <img src="img/ProXlive (4).png" alt="Logo ProXlive" height="30">
+        </a>
+        <span class="navbar-text text-white-50">
+          Parceria EFAPI 2025
+        </span>
+      </div>
+    </nav>
 
-<div class="container-fluid px-5 mt-5">
-    <div class="row">
-        <div class="col-md-9">
-            <div class="card-body p-0">
-                <div class="ratio ratio-16x9">
-                    <iframe 
-                        src="https://rtspserver.zeusvision.com.br/9ff4c1ff-51dd-40e8-8a5a-f78b861d071a/" 
-                        title="Câmera ao vivo do Autódromo" 
-                        allowfullscreen
-                        class="border-0">
-                    </iframe>
+    <main class="container my-5">
+        <div class="row g-4">
+
+            <div class="col-lg-8">
+                <div class="video-container">
+                    <div class="ratio ratio-16x9">
+                        <iframe 
+                            src="https://rtspserver.zeusvision.com.br/a01f2f6a-a77c-43a5-a10c-af1ffdb00fd1/" 
+                            title="Câmera ao vivo do Autódromo" 
+                            allowfullscreen
+                            class="border-0">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card card-info h-100">
+                    <div class="card-body d-flex flex-column p-4">
+                        <div>
+                            <h4 class="fw-bold">Autódromo Internacional</h4>
+                            <h6 class="text-azul mb-3">Chapecó-SC</h6>
+                            <p class="text-muted">Através desta página, você tem acesso às imagens ao vivo, direto do canteiro de obras do Autódromo Internacional de Chapecó.</p>
+                        </div>
+                        <hr class="my-4">
+                        <div class="mt-auto">
+                            <a class="weatherwidget-io" href="https://forecast7.com/pt/n27d10n52d62/chapeco/" data-icons="Climacons Animated" data-days="3" data-theme="pure" data-textcolor="#172b3f" data-mooncolor="#0171ff" data-cloudcolor="#0171ff" >Chapecó, State of Santa Catarina, Brazil</a>
+                            <script>
+                            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+                            </script>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </main>
 
-        <div class="col-md-3 shadow p-4">
-            <div>
-                <h4>Autódromo Internacional</h4>
-                <h6 class="text-azul">Chapecó-SC</h6>
-                <p class="fs-6 text-justify">Acompanhe em tempo real o progresso da obra. Um projeto grandioso que prepara a cidade para receber as principais competições automobilísticas da América do Sul. Através desta página, você tem acesso às imagens ao vivo, direto do canteiro de obras.</p>
+    <section class="group-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Conheça as soluções do <span class="text-azul">Grupo ProXmon</span></h2>
+            <p class="text-muted">Passe o mouse sobre os logos para saber mais.</p>
+        </div>
+
+        <div class="row align-items-center justify-content-center g-4">
+            
+            <div class="col-6 col-md-3 text-center">
+                <img src="img/1.png" 
+                     class="company-logo" 
+                     alt="Logo da Empresa 1"
+                     data-bs-toggle="tooltip" 
+                     data-bs-placement="top"
+                     title="Especializada no desenvolvimento de soluções personalizadas para projetos condominiais e comerciais, integrando tecnologia e software para otimizar a gestão, segurança e eficiência.">
             </div>
-            <div class="mt-5 mb-5 widget-container">
-<a class="weatherwidget-io" href="https://forecast7.com/pt/n27d10n52d62/chapeco/" data-icons="Climacons Animated" data-days="3" data-theme="pure" data-textcolor="#172b3f" data-mooncolor="#0171ff" data-cloudcolor="#0171ff" >Chapecó, State of Santa Catarina, Brazil</a>
-<script>
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-</script>
-            </div>  
+
+            <div class="col-6 col-md-3 text-center">
+                <img src="img/2.png" 
+                     class="company-logo" 
+                     alt="Logo da Empresa 2"
+                     data-bs-toggle="tooltip" 
+                     data-bs-placement="top"
+                     title="Software de análise de vídeo através de visão computacional. Com ele, geramos alertas, dados, eventos e obtemos vários analíticos a partir de câmeras convencionais, usando Inteligência Artificial.">
+            </div>
+
+            <div class="col-6 col-md-3 text-center">
+                <img src="img/3.png" 
+                     class="company-logo" 
+                     alt="Logo da Empresa 3"
+                     data-bs-toggle="tooltip" 
+                     data-bs-placement="top"
+                     title="Software de gestão para condominios residenciais e comerciais">
+            </div>
+
+            <div class="col-6 col-md-3 text-center">
+                 <img src="img/4.png" 
+                      class="company-logo" 
+                      alt="Logo da Empresa 4"
+                      data-bs-toggle="tooltip" 
+                      data-bs-placement="top"
+                      title="Nossa solução completa e integrada para gestão de estacionamentos rotativos, unindo hardware e software em uma plataforma inteligente que otimiza operações, automatiza processos e eleva a eficiência na gestão de acessos e ocupação.">
+            </div>
+            
         </div>
     </div>
-</div>
+</section>
 
-</div>
+    <footer class="bg-minha-marca text-white text-center py-3">
+        <div class="container">
+            <p class="mb-0 small">&copy; 2025 Grupo ProXmon. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+    </script>
 </body>
 </html>
