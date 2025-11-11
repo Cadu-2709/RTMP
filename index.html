@@ -127,10 +127,6 @@
                     </li>
                 </ul>
                 <div class="video-container">
-                    <div id="placeholder-cadeado" class="placeholder-container">
-                        <i class="fa-solid fa-lock"></i>
-                        <p>Clique para acessar a câmera</p>
-                    </div>
                     <div class="ratio ratio-16x9">
                         <iframe 
                             id="camera-iframe"
@@ -207,25 +203,6 @@
         </div>
     </section>
 
-    <div class="modal fade" id="modalSenha" tabindex="-1" aria-labelledby="modalSenhaLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalSenhaLabel">Acesso Restrito</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Por favor, insira a senha para visualizar a câmera ao vivo.</p>
-                    <input type="password" class="form-control" id="inputSenha" placeholder="Senha">
-                    <div id="erroSenha" class="text-danger mt-2" style="display: none;">Senha incorreta.</div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" id="btnVerificarSenha">Acessar</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <footer class="bg-minha-marca text-white text-center py-3">
         <div class="container">
@@ -241,37 +218,6 @@
             // --- INICIALIZAÇÃO DOS TOOLTIPS ---
             const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
             const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-
-            // --- LÓGICA DA SENHA ---
-            const SENHA_CORRETA = 'proxmon@mhnet'; 
-            const placeholderCadeado = document.getElementById('placeholder-cadeado');
-            const modalElement = document.getElementById('modalSenha');
-            const modalSenha = new bootstrap.Modal(modalElement);
-            const btnVerificarSenha = document.getElementById('btnVerificarSenha');
-            const inputSenha = document.getElementById('inputSenha');
-            const erroSenha = document.getElementById('erroSenha');
-
-            placeholderCadeado.addEventListener('click', function() {
-                inputSenha.value = ''; 
-                erroSenha.style.display = 'none'; 
-                modalSenha.show();
-            });
-
-            function verificarSenha() {
-                if (inputSenha.value === SENHA_CORRETA) {
-                    placeholderCadeado.style.display = 'none';
-                    modalSenha.hide(); 
-                } else {
-                    erroSenha.style.display = 'block';
-                }
-            }
-
-            btnVerificarSenha.addEventListener('click', verificarSenha);
-            inputSenha.addEventListener('keypress', function(event) {
-                if (event.key === 'Enter') {
-                    verificarSenha();
-                }
-            });
 
             // --- LÓGICA DO ALTERNADOR DE CÂMERA ---
             const cameraIframe = document.getElementById('camera-iframe');
